@@ -1,6 +1,6 @@
 async function fetchUsers() {
   try {
-    const res = await fetch('http://localhost:8050/users');
+    const res = await fetch('/api/users');
     const users = await res.json();
     const usersDiv = document.getElementById('users');
     usersDiv.innerHTML = '';
@@ -26,7 +26,7 @@ fetchUsers();
 
 async function addUser(username) {
   try {
-    const res = await fetch('http://localhost:8050/github-user', {
+    const res = await fetch('/api/github-user', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username })
