@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/", userRoutes);
+app.use("/api", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("REST API is running");

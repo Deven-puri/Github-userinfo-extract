@@ -1,6 +1,10 @@
+
+// Use local backend if running on localhost, otherwise use relative /api for Vercel
+const API_BASE = window.location.hostname === 'localhost' ? 'http://localhost:8050' : '';
+
 async function fetchUsers() {
   try {
-    const res = await fetch('/api/users');
+    const res = await fetch(`${API_BASE}/api/users`);
     const users = await res.json();
     const usersDiv = document.getElementById('users');
     usersDiv.innerHTML = '';
@@ -24,9 +28,10 @@ async function fetchUsers() {
 
 fetchUsers();
 
+
 async function addUser(username) {
   try {
-    const res = await fetch('/api/github-user', {
+    const res = await fetch(`${API_BASE}/api/github-user`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username })
